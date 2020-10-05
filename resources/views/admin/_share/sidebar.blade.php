@@ -18,7 +18,7 @@
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-graduate"></i> Học sinh</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                    <a href="#"><i class="fas fa-list"></i> Danh sách học sinh</a>
+                    <a href="{{ route('student.index') }}"><i class="fas fa-list"></i> Danh sách học sinh</a>
                 </li>
                 <li>
                     <a href="#"><i class="fas fa-plus-circle"></i> Thêm học sinh</a>

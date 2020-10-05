@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\StudentController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -19,14 +21,18 @@ use Illuminate\Support\Facades\Session;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'admin','middleware' => 'auth'], function () {
+    Route::get('',[AdminController::class,'index'])->name('admin');
 
-Route::prefix('admin')
-    ->namespace('Admin')
-    ->middleware('auth')
-    ->group(function ()
-    {
-        Route::get('',[AdminController::class,'index'])->name('admin');
+    Route::get('/logout',[AdminController::class,'logout']) -> name('logout');
 
-        Route::get('/logout',[AdminController::class,'logout']) -> name('logout');
-    });
+    Route::resource('/student', StudentController::class);
+});
+
+    
+    
+
+    
+
+    
+
