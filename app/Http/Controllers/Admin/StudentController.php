@@ -15,7 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        $students = Student::orderBy('id', 'DESC')->get();
         return view('admin.student.index', [
             'students' => $students,
         ]);
@@ -28,7 +28,10 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $students = Student::orderBy('name', 'ASC')->get();
+        return view('admin.student.create', [
+            'students' => $students,
+        ]);
     }
 
     /**
@@ -39,7 +42,13 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $add = Student::create($request->all());
+
+        if( $add ) {
+            return redirect()->route('student.index')->with('success', 'Thêm mới thành công');
+        } else {
+            return redirect()->back()->with('error', 'Thêm mới không thành công');
+        }
     }
 
     /**
@@ -48,9 +57,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Student $student)
     {
-        //
+        return view('admin.student.show', ['student' => $student]);
     }
 
     /**
@@ -59,9 +68,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        //
+        return view('admin.student.edit',['student' => $student]);
     }
 
     /**
@@ -71,9 +80,18 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
-        //
+        $student->name = $request->name;
+        $student->phone = $request->phone;
+        $student->age = $request->age;
+        $student->gender = $request->gender;
+        $student->address = $request->address;
+        $student->is_active = $request->is_active;
+
+        $student->save();
+
+        return redirect()->route('student.index');
     }
 
     /**
@@ -82,8 +100,11 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        //
+        if($student) {
+            $student->delete(); // tra ve ket qua true/false
+        }
+        return redirect()->route('student.index');
     }
 }
