@@ -21,5 +21,4 @@
     });
 </script>
 
-// CUSTOM JS
 @yield('script')

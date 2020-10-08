@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\StudentController;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +18,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Auth::routes();
+
+Route::group(['prefix' => 'admin','middleware' => 'auth'], function () {
+    Route::get('',[AdminController::class,'index'])->name('admin');
+
+    Route::get('/logout',[AdminController::class,'logout']) -> name('logout');
+
+    Route::resource('/student', StudentController::class);
 });
 
-Route::get('/admin', function () {
-    return view('admin.dashboard.index');
-});
+    
+    
+
+    
+
+    
+

@@ -15,37 +15,25 @@
             <a href="#"><i class="fas fa-tachometer-alt"></i> Trang chủ</a>
         </li>
         <li class="@yield('active_2')">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-tshirt"></i> Sản phẩm</a>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-graduate"></i> Học sinh</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                    <a href="#"><i class="fas fa-list"></i> Danh sách sản phẩm</a>
+                    <a href="{{ route('student.index') }}"><i class="fas fa-list"></i> Danh sách học sinh</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-plus-circle"></i> Thêm sản phẩm</a>
+                    <a href="#"><i class="fas fa-plus-circle"></i> Thêm học sinh</a>
                 </li>
             </ul>
         </li>
 
         <li class="@yield('active_3')">
-            <a href="#categoriesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-chart-pie"></i> Danh mục</a>
+            <a href="#categoriesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-book-open"></i> Môn học</a>
             <ul class="collapse list-unstyled" id="categoriesSubmenu">
                 <li>
-                    <a href="#"><i class="fas fa-list"></i> Danh mục sản phẩm</a>
+                    <a href="#"><i class="fas fa-list"></i> Danh sách môn học</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-plus-circle"></i> Thêm danh mục</a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="@yield('active_4')">
-            <a href="#gallerySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-folder-open"></i> Ảnh sản phẩm</a>
-            <ul class="collapse list-unstyled" id="gallerySubmenu">
-                <li>
-                    <a href="galleries"><i class="fas fa-list"></i> Danh mục ảnh sản phẩm</a>
-                </li>
-                <li>
-                    <a href="galleries_add"><i class="fas fa-plus-circle"></i> Thêm ảnh</a>
+                    <a href="#"><i class="fas fa-plus-circle"></i> Thêm môn học</a>
                 </li>
             </ul>
         </li>
@@ -63,7 +51,7 @@
         </li>
         
         <li>
-            <a href="#"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+            <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
         </li>
     </ul>
 </nav>
