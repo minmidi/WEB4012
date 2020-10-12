@@ -71,5 +71,7 @@
         @endforeach
     </tbody>
   </table>
-
+    <div class="clearfix float-right">
+        {{ $students -> links() }}
+    </div>
 @stop
