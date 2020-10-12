@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Subject;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SubjectFactory extends Factory
+class PostFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Subject::class;
+    protected $model = Post::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,11 @@ class SubjectFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'is_active' => $this->faker->numberBetween(0,1),
+            'desc' => $this->faker->text(10),
+            'content' => $this->faker->text(200),
+            'image_url' => $this->faker->imageUrl,
+            'student_id' => $this->faker->numberBetween(1, 10),
+            'status' => 1,
         ];
     }
 }
